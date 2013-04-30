@@ -1,0 +1,59 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\title{COEN 20 Homework \#3}
+%Ch 4 Q's 21, 22, 24, 25
+	%\subtitle{COEN 20}
+\date{22 April 2013}
+\author{Rick Sullivan}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+	\item[21.]
+		\begin{enumerate}
+			\item 	\begin{tabbing}
+				\texttt{int bit = 16;} 	\\
+				\texttt{int temp = x;} 	\\
+				\texttt{while(bit < 24)$\{$ } \\
+				\hspace{4ex}	\texttt{temp \^\ = (1 << bit);}	\\
+				\hspace{4ex}	\texttt{if(temp > x) break;}	\\
+				\hspace{4ex}	\texttt{bit++;}		\\
+				\texttt{$\}$}		\\
+				\texttt{x = temp;}	\\
+				\end{tabbing}
+
+			\item 	\texttt{((short*)\&x)[3] += 1;}
+		\end{enumerate}
+
+	\item[22.] \texttt{A63F}
+
+	\item[24.] 
+		\begin{tabular}{ p{4cm} | l | l | l | l}
+			\hline
+			% This first row is a little messy
+			\textit{Characteristic} & \textit{Bitwise Operators} & 
+			\textit{Structure Bit Fields} & \textit{Variant Acess} & 
+			\textit{Unions} \\ \hline
+			% End of first row
+			Messy syntax? &	YES & NO & NO & NO\\ \hline 
+			Ambiguous semantics? & NO & YES & YES & YES\\ \hline
+			Bit-field assignment restrictions? & NO & YES & YES & YES\\ \hline
+			More efficient code generation? & YES & YES & YES & NO \\ \hline
+
+		\end{tabular}
+	
+	\item[25.]
+		\begin{enumerate}
+			\item \texttt{ short value = (packed >> 8); }
+
+			\item \texttt{ short value = packed.c[1]; }
+		\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

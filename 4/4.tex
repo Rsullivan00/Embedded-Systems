@@ -1,0 +1,94 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{pifont}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[table]{xcolor}
+
+\title{COEN 20 Homework \#4}
+%Ch 5 Problems 1-9, 12-19 
+\date{29 April 2013}
+\author{Rick Sullivan}
+
+\begin{document}
+\noindent Rick Sullivan     \\
+          Professor Lewis   \\
+          COEN 20 - Embedded Systems    \\
+          29 April 2013     \\
+                            \\
+\centerline{Homework \#4}   \\
+                            
+\begin{enumerate}
+	\item   a) I/O-MEM-CPU
+	\item   b) CPU
+	\item   \begin{enumerate}
+                \item   \begin{align*}
+                        256 kB &= 256 * 1024\ bytes          \\
+                        lg(256*1024) &= 18\ address\ lines.    
+                        \end{align*}
+                \item   \begin{align*} 
+                        2 MB &= 2 * 1048576\ bytes             \\
+                        lg(2 * 1048576) &= 21\ address\ lines.
+                        \end{align*}
+                \item   \begin{align*}
+                        4 GB = 4 * 1024 MB &= 4 * 1024 * 1048576\ bytes  \\
+                        lg(4 * 1024 * 1048576) &= 32\ address\ lines.
+                        \end{align*}
+            \end{enumerate}
+	\item   \begin{enumerate}
+                \item   Data is stored in the \underline{MEMORY}.
+                \item   Programs are stored in the \underline{MEMORY}.
+                \item   To be executed, an instruction is loaded into the \underline{IR}.
+                \item   The address of an instruction to be executed is held in \underline{PC}.
+                \item   Instructions are retried during the \underline{FETCH PHASE}.
+                \item   Instructions are interpreted during the \underline{EXECUTE PHASE}.
+                \item   Arithmetic operations occur in the \underline{ALU}.
+                \item   Temporary intermediate results are held in the \underline{ACC}.
+            \end{enumerate}
+	\item   The fetch phase is preceded by the \underline{EXECUTE} phase.
+	\item   The fetch phase is followed by the \underline{EXECUTE} phase.
+	\item   The instruction register (IR) is loaded during the \underline{FETCH} phase.
+	\item   Computation performed by an instruction occurs during the \underline{EXECUTE} phase.
+	\item   In the ARM architecture, there are:
+        \begin{enumerate}
+            \item 2 bytes in a half word.
+            \item 8 bytes in a double word.
+        \end{enumerate}
+    \pagebreak
+    \setcounter{enumi}{11}
+	\item   
+        \begin{enumerate}
+            \item
+                \begin{tabular}{ p{2cm} | p{2cm} | p{2cm} | p{2cm} }   
+                    \hline
+                    Address 111 & Address 110 & Address 109 & Address 108   \\ \hline
+                    Address 107 & Address 106 & \cellcolor{gray}Address 105 & \cellcolor{gray}Address 104   \\ \hline
+                    \cellcolor{gray}Address 103 & \cellcolor{gray}Address 102 & Address 101 & Address 100   \\ \hline
+                    Address 99  & Address 98  & Address 97  & Address 96    \\ \hline
+                \end{tabular}
+             \item  Address 105.
+             \item  2 memory cycles.
+             \item  1 memory cycle.
+         \end{enumerate}
+     \item  b) The most significant byte.
+     \item  Address 100.
+     \item  \begin{enumerate}
+                \item   Address N + 3.
+                \item   Address N + 2. 
+            \end{enumerate}
+     \item  b) Big-endian numbering.
+     \item  a) From least to most significant bit, starting at 0.
+     \item  \begin{enumerate}
+                \item   101.
+                \item   102.
+                \item   104.
+                \item   108.
+            \end{enumerate}
+     \item  b)PC, c)LR, and d)PSW.
+\end{enumerate}
+
+\end{document}
+
