@@ -1,0 +1,233 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{pifont}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{multicol}
+
+\title{COEN 20 Homework \#6}
+%Ch 7 #s 3, 4, 6
+\date{13 May 2013}
+\author{Rick Sullivan}
+
+\begin{document}
+\noindent Rick Sullivan     \\
+          Professor Lewis   \\
+          COEN 20           \\
+          13 May 2013        \\
+                            \\
+\centerline {Homework \#6}    \\
+
+\begin{enumerate}
+    \item[3.]
+        \begin{multicols}{2}
+        \begin{enumerate}
+            \item
+                \texttt{LDRH R0, a   \\
+                CMP R0, \#0 \\
+                BLS EndIf   \\
+                CMP R0, \#99\\
+                BHI EndIf   \\
+                LDRH R1, b  \\
+                LSL R1, R1, \#2 \\
+                STRH R1, b  \\
+                            \\
+                EndIf:      \\
+                ...  \\
+                }
+            \item
+                \texttt{LDR R0, a   \\
+                CMP R0, \#100   \\
+                BGT Then    \\
+                CMP R0, \#50\\
+                BGE EndIf   \\
+                            \\
+                Then:       \\
+                LDR R1, b   \\
+                AND R0, R0, R1  \\
+                STR R0, a   \\
+                            \\
+                EndIf:      \\
+                ...  \\
+                }
+            \item
+                \texttt{LDR R0, a   \\
+                CMP R0, \#200   \\
+                BLS Else    \\
+                LDR R0, b   \\
+                CMP R0, \#0 \\
+                BLS EndIf   \\
+                LDR R0, =5 \\
+                STR R0, c   \\
+                B   EndIf   \\
+                            \\
+                Else:       \\
+                LDR R0, =-5\\
+                STR R0, c   \\ 
+                            \\
+                EndIf:      \\
+                ...         \\
+                }
+        \end{enumerate}
+        \end{multicols}
+        
+    \item[4.]
+        \begin{multicols}{2}
+        \begin{enumerate}
+            \item
+                \texttt{LDRSH R0, a  \\
+                LDRSH R1, b  \\
+                CMP R0, R1  \\
+                ITT  GT      \\
+                ADDGT R1, R1, \#2 \\
+                STRHGT R1, c  \\
+                }
+            \item
+                \texttt{LDRH R0, a   \\
+                LDRH R1, b  \\
+                CMP R0, R1  \\
+                ITE EQ    \\
+                LDREQ R0, \#0 \\
+                SUBNE R0, R0, R1  \\
+                STRH R0, c  \\
+                }
+            \item
+                \texttt{LDR R0, b   \\
+                LDR R1, c   \\
+                CMP R0, R1  \\
+                ITE  LT     \\
+                STRLT R0, a   \\
+                STRGE R1, a   \\
+                }
+            \item
+                \texttt{LDR R0, b   \\
+                CMP R0, \#0     \\
+                ITE  GT  \\
+                LDRGT R0, =5 \\
+                LDRLE R0, =-5\\
+                \\
+                LDR R1, a   \\
+                CMP R1, \#200 \\
+                IT  HI  \\
+                STRHI R0, c \\
+                } 
+        \end{enumerate}
+        \end{multicols}
+
+    \pagebreak
+    \item[6.]
+        \begin{multicols}{2}
+        \begin{enumerate}
+            \item
+                \texttt{LDR R0, a   \\
+                LDR R1, =125   \\
+                BL f1   \\
+                STR R0, x   \\
+                }
+            \item
+                \texttt{LDRB R0, c  \\
+                BL f2   \\
+                }
+
+            \item
+                \texttt{ADR R0, c   \\
+                BL f3   \\
+                }
+
+            \item
+                \texttt{ADD R0, R0, R2  \\
+                ADC R1, R1, R3  \\
+                BX LR       \\
+                }
+
+            \item
+                \texttt{LDR R0, =100   \\
+                ADR R1, n32 \\
+                BL foo      \\
+                STRD R0, R1, n64 \\
+                }
+            \item
+                \texttt{PUSH \{R4, LR\}    \\
+                MOV R4, R0  \\
+                LDR R0, =5  \\
+                BL green    \\
+                ADD R0, R0, R4  \\
+                POP \{R4, LR\} \\
+                BX LR       \\
+                }
+            \item
+                \texttt{LDR R1, [R0]    \\
+                LDR R2, =0  \\
+                STR R2, [R0]    \\
+                MOV R0, R1  \\
+                BX LR       \\
+                }
+            \item
+                \texttt{LDR R0, u32 \\
+                CMP R0, \#10 \\
+                ITE  HI  \\
+                LDRHI R0, =-1 \\
+                LDRLS R0, =1  \\
+                LDR R1, s32 \\
+                ADD R0, R0, R1  \\
+                STR R0, s32 \\
+                }
+            \item
+                \texttt{LDR R0, s32 \\
+                CMP R0, \#-10   \\
+                BLT EndIf   \\
+                CMP R0, \#10    \\ 
+                BGE EndIf   \\
+                LDR R0, =0  \\
+                STR R0, s32 \\
+                EndIf:      \\
+                ...         \\
+                }
+            \item
+                \texttt{LDR R0, u32 \\
+                LDR R1, min \\
+                CMP R1, R0  \\
+                BHI Then    \\
+                LDR R1, max \\
+                CMP R0, R1  \\
+                BLS EndIf   \\
+                Then:       \\
+                LDR R0, =0  \\
+                STR R0, u32 \\
+                EndIf:      \\
+                ...         \\
+                }
+            \item
+                \texttt{LDR R0, s32 \\
+                MOV R4, R0  \\
+                BL extra    \\
+                ADD R0, R0, R4  \\
+                STR R0, s32 \\
+                }
+            \item
+                \texttt{LDR R3, [R0]    \\
+                LDR R4, [R1]    \\
+                STR R4, [R0]    \\
+                STR R3, [R1]    \\
+                }
+            \item
+                \texttt{PUSH \{R4, LR\}  \\
+                MOV R4, R1  \\
+                BL Blue \\
+                MOV R1, R4  \\
+                MOV R4, R0  \\
+                MOV R0, R1  \\
+                BL Blue     \\
+                ADD R0, R0, R4  \\
+                POP \{R4, LR\}   \\
+                BX LR       \\
+                }
+        \end{enumerate}
+        \end{multicols}
+\end{enumerate}
+\end{document}
+

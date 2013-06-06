@@ -1,0 +1,220 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{pifont}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{multicol}
+
+\title{COEN 20 Homework \#5}
+%Ch 5 Problems 1-9, 12-19 
+\date{29 April 2013}
+\author{Rick Sullivan}
+
+\begin{document}
+\noindent Rick Sullivan     \\
+          Professor Lewis   \\
+          COEN 20           \\
+          5 May 2013        \\
+                            \\
+\centerline {Homework \#5}    \\
+
+\begin{enumerate}
+    \item[6.]
+        \begin{enumerate}
+            \item
+                \texttt{long purple;} \\
+                \texttt{short blue[10];} \\
+                \texttt{short red;} \\
+                \texttt{blue[purple] = red;} \\
+            \item
+                \texttt{long green;}   \\
+                \texttt{green++;}   \\
+                \texttt{long long violet = green;}   \\
+            \item
+                \texttt{char black;}   \\
+                \texttt{char white;}   \\
+                \texttt{white = black - (5 * (black/5));}   \\
+            \item
+                \texttt{long long orange;}  \\
+                \texttt{long long yellow;}  \\
+                \texttt{yellow = orange << 1;}  \\
+        \end{enumerate}
+    \item[7.]
+        \begin{multicols}{2}
+        \begin{enumerate}
+            \item
+                \texttt{LDR R0, =100}   \\
+                \texttt{STR R0, u32}    \\
+            \item
+                \texttt{LDR R0, u32}    \\
+                \texttt{STRB R0, u8}    \\
+            \item
+                \texttt{LDR R0, =100}   \\
+                \texttt{STRH R0, u16}   \\
+            \item
+                \texttt{LDRSB R0, s8}   \\
+                \texttt{STRH R0, s16}   \\
+            \item
+                \texttt{LDR R0, =100}   \\
+                \texttt{STRB R0, u8}    \\
+            \item
+                \texttt{LDRSH R0, s16}  \\
+                \texttt{STR R0, s32}    \\
+            \item
+                \texttt{LDR R0, =100}   \\
+                \texttt{LDR R1, =0}     \\
+                \texttt{STRD R0, R1, u64} \\
+            \item
+                \texttt{LDRSB R0, s8}   \\
+                \texttt{STR R0, s32}    \\
+            \item
+                \texttt{LDRB R0, u8}    \\
+                \texttt{STRH R0, u16}   \\
+            \item
+                \texttt{LDR R0, s32}    \\
+                \texttt{ASR R1, R0, \#31}\\
+                \texttt{LDRD R0, R1, s64}   \\
+            \item
+                \texttt{LDRH R0, u16}   \\
+                \texttt{STR R0, u32}    \\
+            \item
+                \texttt{LDR R0, =-1}    \\
+                \texttt{LDR R1, =-1}    \\
+                \texttt{STRD R0, R1, s64}   \\
+            \item
+                \texttt{LRDB R0, u8}    \\
+                \texttt{STR R0, u32}    \\
+            \item
+                \texttt{ADR R0, u32}    \\
+                \texttt{STR R0, pu32}   \\
+            \item
+                \texttt{LDR R0, u32}    \\
+                \texttt{LDR R1, =0}     \\
+                \texttt{STRD R0, R1, u64}   \\
+            \item
+                \texttt{ADR R0, u8}     \\
+                \texttt{STRB R0, pu8}   \\
+            \item
+                \texttt{LDRH R0, u16}   \\
+                \texttt{STRB R0, u8}    \\
+            \item
+                \texttt{LDRB R0, u8}    \\
+                \texttt{STRB R0, u32}  \\
+            \item
+                \texttt{LDR R0, u32}    \\
+                \texttt{STRH R0, u16}   \\
+            \item
+                \texttt{LDR R0, pu32}         \\
+                \texttt{LDR R1, =1}         \\
+                \texttt{LDR R1, [R0]}         \\
+            \item
+                \texttt{LDRB R0, u8}     \\
+                \texttt{ADD R0, R0, \#1} \\
+                \texttt{STRH R0, u16}   \\
+            \item
+                \texttt{LDRD R0, R1, u64}   \\
+                \texttt{ADDS R0, R0, \#1}    \\
+                \texttt{ADC R1, R1, \#0}     \\
+                \texttt{STRD R0, R1, u64}   \\
+            \item
+                \texttt{ADR R0, u16}    \\
+                \texttt{ADD R0, R0, \#1} \\
+                \texttt{STR R0, p16}   \\
+            \item
+                \texttt{LDR R0, p16}    \\
+                \texttt{LDRH R1, [R0]}  \\
+                \texttt{ADD R1, R1, \#1}\\
+                \texttt{STRH R1, [R0]}  \\  
+        \end{enumerate}
+        \end{multicols}
+        
+    \item[8.]
+        \begin{multicols}{2}
+        \begin{enumerate}
+            \item
+                \texttt{LDRSB R0, s8}    \\
+                \texttt{LDRD R1, R2, s64}\\
+                \texttt{ADDS R0, R0, R1} \\
+                \texttt{STR R0, s32}     \\
+            \item
+                \texttt{ADR R0, a32}    \\
+                \texttt{LDR R1, p32}    \\
+                \texttt{SUB R0, R1, R0} \\
+                \texttt{ASR R0, R0, \#2} \\
+                \texttt{ADD R0, R0, \#5}\\
+                \texttt{STR R0, k32}    \\
+            
+            \item
+                \texttt{ADR R0, a64}\\
+                \texttt{LDR R1, k32}\\
+                \texttt{ADD R0, R0, R1 LSL \#3}\\
+                \texttt{ADD R0, R0, \#1}\\
+                \texttt{LDR R1, p32}\\
+                \texttt{STR R0, [R1]}\\
+
+            \item
+                \texttt{LDR R0, u32}    \\
+                \texttt{MUL R0, R0, \#10}   \\
+                \texttt{STR R0, s32}    \\
+
+            \item
+                \texttt{LDR R0, pp16}   \\
+                \texttt{LDR R0, [R0]}   \\
+                \texttt{LDR R1, \#0}    \\
+                \texttt{STR R1, [R0, \#1]}   \\
+
+            \item
+                \texttt{LDR R0, p32}    \\
+                \texttt{ADR R1, a32}    \\
+                \texttt{LDR R2, k32}    \\
+                \texttt{ADD R1, R1, R2 LSL \#2}  \\
+                \texttt{SUB R1, R1, R0} \\
+                \texttt{ASR R1, R1, \#2}    \\
+                \texttt{STR R1, k32}    \\
+
+            \item
+                \texttt{LDR R0, k32}    \\
+                \texttt{SUB R0, R0, \#1}\\
+                \texttt{ADR R1, a16}    \\
+                \texttt{ADD R1, R1, R0 LSL \#1}   \\
+                \texttt{LDRH R0, [R1]}   \\
+                \texttt{ADD R0, R0, \#1}\\
+                \texttt{STRH R0, [R1]}  \\
+
+            \item
+                \texttt{LDR R0, u32}  \\
+                \texttt{LDR R1, =0}  \\
+                \texttt{STRD R0, R1, u64}  \\
+
+            \item
+                \texttt{LDRSB R0, s8}  \\
+                \texttt{ASR R1, R0, \#31}  \\
+                \texttt{STRD R0, R1, s64}   \\
+
+            \item
+                \texttt{LDR R0, s32}  \\
+                \texttt{ASR R1, R0, \#31}  \\
+                \texttt{STRD R0, R1, s64}   \\
+
+            \item
+                \texttt{LDR R0, s32}  \\
+                \texttt{LDR R1, =10}  \\
+                \texttt{SDIV R2, R0, R1}  \\
+                \texttt{MUL R1, R2, R1}  \\
+                \texttt{SUB R0, R0, R1}  \\
+                \texttt{STR R0, s32}   \\
+
+            \item
+                \texttt{LDR R0, u16}  \\
+                \texttt{LDR R1, =10}  \\
+                \texttt{UDIV R0, R0, R1}  \\
+                \texttt{STRH R0, u16}   \\
+        \end{enumerate}
+        \end{multicols}
+\end{enumerate}
+\end{document}
+

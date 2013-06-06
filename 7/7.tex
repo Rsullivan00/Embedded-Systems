@@ -1,0 +1,108 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{pifont}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{multicol}
+
+\title{COEN 20 Homework \#7}
+%Ch 8 All questions 
+\date{13 May 2013}
+\author{Rick Sullivan}
+
+\begin{document}
+\noindent Rick Sullivan     \\
+          Professor Lewis   \\
+          COEN 20           \\
+          20 May 2013        \\
+                            \\
+\centerline {Homework \#7}    \\
+                            \\
+\begin{enumerate}
+    \item
+        c) DMA
+    \item
+        c) DMA
+    \item
+        c) DMA
+    \item
+        c) Maximum memory bandwidth
+    \item
+        \begin{enumerate}
+            \item   2 clock cycles
+            \item   2 clock cycles
+            \item   1 clock cycle
+            \item   5 clock cycles
+            \item   4 clock cycles
+        \end{enumerate}
+    \item
+        \begin{enumerate}
+            \item   1 byte from memory
+            \item   4 bytes from memory
+            \item   0 bytes
+            \item   16 bytes to memory
+            \item   4 bytes to memory
+        \end{enumerate}
+    \item a, b, c, and d
+    \item a
+    \item a, b, and c
+    \item a) R0, c) R12, d) LR, and e) PSW
+    \item c) The NVIC
+    \item a) A hard-coded constant built into the CPU
+    \item False
+    \item b) Tail-chaining
+    \item c) Late arrival processing
+    \item b) The starting address of the vector table is stored in the vector table offset register
+    \item 
+        \begin{enumerate}
+            \item If the second interrupt is of \textbf{lower} priority, then only after the ISR returns.
+            \item Immediately if the second interrupt is of \textbf{higher} priority.
+        \end{enumerate}
+    \item Registers R0-R3, R12, LR, Return Address, and PSR. 
+    \item Interrupt-driven I/O is slowed by the overhead of saving and restoring the machine state.
+    \item 
+        \begin{enumerate}
+            \item This case would be the best case latency of 340nsec.
+            \item The latency depends on whether the new ISR has a higher or lower priority than the currently executing ISRs.
+            \item DMA has a latency of approximately 60nsec.
+            \item The latency of the polled waiting loop is unpredictable.
+        \end{enumerate}
+    \item 
+\begin{lstlisting}
+void move(uint8_t *from, uint8_t *to)
+{
+    for(int byte = 0; byte < 1000; byte++)
+    { 
+        *to = *from;
+        to++; 
+        from++;
+    }
+}
+   
+In assembly:
+
+        ; R0 has &from
+        ; R1 has &to
+move:
+
+        LDR R3, =0         ; byte counter
+Start:  CMP R3, #250       ; It's faster to do 4 bytes per loop,
+        BHE Return         ;    so we only need to loop 250 times
+        LDR R2, [R0], #1   ; Get next byte and update pointer
+        STR R2, [R1], #1   ; Store byte and update pointer
+        ADD R3, R3, #1     ; Increment counter.
+        B   Start
+Return: BX  LR
+\end{lstlisting}
+
+    Each loop should take approximately 8 clock cycles, and it will execute
+250 times. Therefore, it will take 2,000 clock cycles (+ some negligible
+cycles outside of the loop). At 20nsec per cycle, this should take about
+40,000 nsec.
+\end{enumerate}
+\end{document}
+
